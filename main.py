@@ -1,4 +1,4 @@
-# Função para realizar um saque
+# Função para realizar um saque. TODOS os parâmetros devem ter seus nomes especificados
 def withdraw(*, balance, value, statement, limit, withdraws_num, withdraws_limit):
     value = round(value, 2)
     balance -= value
@@ -18,7 +18,7 @@ def withdraw(*, balance, value, statement, limit, withdraws_num, withdraws_limit
     except Exception as e:
         return f"Error! {e}"
 
-# Função para depositar o valor
+# Função para depositar o valor. Os parâmetros devem estar na ordem correta
 def deposit(balance, value, statement, /):
     value = round(value, 2)
 
@@ -32,7 +32,9 @@ def deposit(balance, value, statement, /):
     except Exception as e:
         return f"Invalid operation! Missing some parameters or something else! {e}"
 
-# Função para retornar o extrato bancário com as operações realizadas
+# Função para retornar o extrato bancário com as operações realizadas. O saldo deve estar
+# na ordem correta.
+# O extrato deve ser nomeado.
 def bank_statement(balance, /, *, statement):
     return statement + "\n\nCurrent Balance: R$ %.2f" % balance
 

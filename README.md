@@ -22,3 +22,11 @@ Essa operação deve listar todos os depósitos e saques realizados na conta. No
 ## Operação de extrato - versão 2
 
 A função extrato deve receber os argumentos por posição e nome (positional only e keyword only). Argumentos posicionais: saldo, argumentos nomeados: extrato.
+
+## Operação de criação de usuário/cliente - versão 2
+
+Criar usuário (cliente) - O programa deve armazenar os usuários em uma lista, um usuário é composto por: nome, data de nascimento, cpf e endereço. O endereço é uma string com o formato: logradouro - número - bairro - cidade/sigla estado. Deve ser armazenado somente os números do CPF. Não podemos cadastrar 2 usuários com o mesmo CPF.
+
+## Operação de criação de conta corrente - versão 2
+
+Criar conta corrente - O programa deve armazenar contas em uma lista. Uma conta é composta por: agência, número da conta e usuário. O número da conta é sequencial, iniciando em 1. O número da agência é fixo: "0001". O usuário pode ter mais de uma conta mas uma conta pertence somente a um usuário.

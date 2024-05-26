@@ -9,7 +9,7 @@ def create_user(name, birth_date, cpf, address, users_added, /):
     try:
         for user in users_added:
             for key, value in user.items():
-                if key == cpf:
+                if value == cpf:
                     raise Exception('Invalid Operation! User already added!')
         new_user = {
             'Name': name,
@@ -23,6 +23,7 @@ def create_user(name, birth_date, cpf, address, users_added, /):
         return users_added
     except Exception as e:
         print(e.args)
+        return users_added
 
 # Criar conta corrente - O programa deve armazenar contas em uma lista. Uma conta é composta
 # por: agência, número da conta e usuário. O número da conta é sequencial, iniciando em 1. O

@@ -31,17 +31,24 @@ def create_user(name, birth_date, cpf, address, users_added, /):
 # somente a um usuário.
 
 def create_current_account(agency, user, existing_accounts, /):
-    new_account_number = len(existing_accounts) + 1
+    try:
+        for account in existing_accounts:
+            if account['Name'] == user:
+                raise Exception('Invalid Operation! User already has an account!')
+        new_account_number = len(existing_accounts) + 1
 
-    new_account = {
-        'Agency': agency,
-        'Account Number': str(new_account_number),
-        'Name': user
-    }
+        new_account = {
+            'Agency': agency,
+            'Account Number': str(new_account_number),
+            'Name': user
+        }
 
-    existing_accounts.append(new_account)
+        existing_accounts.append(new_account)
 
-    return existing_accounts
+        return existing_accounts
+    except Exception as e:
+        print(e.args)
+        return existing_accounts
 
 # Função para realizar um saque. TODOS os parâmetros devem ter seus nomes especificados
 def withdraw(*, balance, value, statement, limit, withdraws_num, withdraws_limit):
@@ -166,12 +173,11 @@ while True:
         except Exception as e:
             print(e.args)
     elif option == "5":
-        print("CREATE CURRENT ACCOUNT -------------- Inform the new account's owner name:\n")
-        client_account_name = input("We'll check if the user exists: ")
+        print("CREATE CURRENT ACCOUNT -------------- Inform the new account's owner CPF:\n")
+        client_account_cpf = input("We'll check if the user exists: ")
         for user in users_list:
-            if client_account_name == user['Name']:
-                accounts_list = create_current_account(AGENCY, client_account_name, accounts_list)
-                print('NEW ACCOUNT CREATED!!!')
+            if client_account_cpf == user['CPF']:
+                accounts_list = create_current_account(AGENCY, user['CPF'], accounts_list)
         print(accounts_list)
     elif option == "6":
         print('ALL CLIENTS RELATION:')
